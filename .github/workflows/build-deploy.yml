@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: production-files
-        path: ../quartz/public
+        path: /home/runner/quartz/public
         
 
     

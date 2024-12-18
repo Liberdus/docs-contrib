@@ -37,7 +37,7 @@ jobs:
       run: cd quartz && ls -la && git apply ../quartz.patch && pwd && npx quartz build -d ../.
 
     - name: Upload production-ready build files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: production-files
         path: ./quartz/public
@@ -54,7 +54,7 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: production-files
         path: ./.

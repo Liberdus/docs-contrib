@@ -34,7 +34,7 @@ jobs:
       run: cd ../quartz && npm install
       
     - name: Generate static html
-      run: cd ../quartz && ls -la && git apply ./docs-contrib/quartz.patch && pwd && npx quartz build -d ./docs-contrib
+      run: cd ../quartz && ls -la && git apply ../docs-contrib/quartz.patch && pwd && npx quartz build -d ../docs-contrib
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v4

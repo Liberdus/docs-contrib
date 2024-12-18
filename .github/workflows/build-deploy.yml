@@ -34,7 +34,7 @@ jobs:
       run: cd ../quartz && npm install
       
     - name: Generate static html
-      run: cd ../quartz && ls -la && git apply ../docs-contrib/quartz.patch && pwd && mkdir ./docs-contrib/public && npx quartz build -d /home/runner/work/docs-contrib -o /home/runner/work/docs-contrib/
+      run: cd ../quartz && ls -la && git apply ../docs-contrib/quartz.patch && pwd && mkdir ../docs-contrib/public && npx quartz build -d ../docs-contrib -o ../docs-contrib/public
 
     - name: Check if build files are generated
       run: ls -la . && pwd

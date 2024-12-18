@@ -34,13 +34,13 @@ jobs:
       run: cd ../quartz && npm install
       
     - name: Generate static html
-      run: cd ../quartz && ls -la && git apply ../docs-contrib/quartz.patch && pwd && npx quartz build -d /home/runner/work/docs-contrib 
+      run: cd ../quartz && ls -la && git apply ../docs-contrib/quartz.patch && pwd && npx quartz build -d /home/runner/work/docs-contrib -o /home/runner/work/docs-contrib/public
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v4
       with:
         name: production-files
-        path: /home/runner/work/quartz/public
+        path: /home/runner/work/docs-contrib/public
         
 
     
@@ -58,9 +58,6 @@ jobs:
       with:
         name: production-files
         path: ./.
-
-    - name: Remove Quartz Ads
-      run: rm -rf ./quartz/
 
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3

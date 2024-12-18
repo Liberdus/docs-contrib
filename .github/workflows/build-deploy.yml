@@ -1,0 +1,69 @@
+name: Build & deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 20.18.1
+
+    - name: check docs
+      run: ls 
+
+    - name: Clone Quartz
+      run: git clone https://github.com/jackyzha0/quartz.git
+      
+    - name: Install NPM packages
+      run: cd quartz && npm install
+      
+    - name: Generate static html
+      run: cd quartz && ls -la && git apply ../quartz.patch && pwd && npx quartz build -d ../.
+
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: production-files
+        path: ./quartz/public
+        
+
+    
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: production-files
+        path: ./.
+
+    - name: Create CNAME for domain
+      run: echo "docs-contrib.liberdus.com" > CNAME
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./.

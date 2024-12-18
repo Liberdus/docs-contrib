@@ -6,65 +6,17 @@
       <description>Last 10 notes on Liberdus Contributor Docs</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>RoamFlavoredMarkdown</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/RoamFlavoredMarkdown</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/RoamFlavoredMarkdown</guid>
-    <description>This plugin provides support for Roam Research compatibility. See Roam Research Compatibility for more information. Note For information on how to add, remove or configure plugins, see the Configuration page.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
+    <title>getting_started</title>
+    <link>https://http:/liberdus.com/docs-contrib/getting_started</link>
+    <guid>https://http:/liberdus.com/docs-contrib/getting_started</guid>
+    <description>Overview During the time contributing to the liberdus project, creating a local network is a great way to test your changes and see how they affect the network ...</description>
+    <pubDate>Wed, 18 Dec 2024 14:32:01 GMT</pubDate>
   </item><item>
-    <title>Static</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/Static</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/Static</guid>
-    <description>This plugin emits all static resources needed by Quartz. This is used, for example, for fonts and images that need a stable position, such as banners and icons.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>SyntaxHighlighting</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/SyntaxHighlighting</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/SyntaxHighlighting</guid>
-    <description>This plugin is used to add syntax highlighting to code blocks in Quartz. See syntax highlighting for more information. Note For information on how to add, remove or configure plugins, see the Configuration page.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>TableOfContents</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/TableOfContents</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/TableOfContents</guid>
-    <description>This plugin generates a table of contents (TOC) for Markdown documents. See table of contents for more information. Note For information on how to add, remove or configure plugins, see the Configuration page.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>TagPage</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/TagPage</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/TagPage</guid>
-    <description>This plugin emits dedicated pages for each tag used in the content. See folder and tag listings for more information. Note For information on how to add, remove or configure plugins, see the Configuration page.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>Plugins</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/plugins/</guid>
-    <description></description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>Setting up your GitHub repository</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/setting-up-your-GitHub-repository</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/setting-up-your-GitHub-repository</guid>
-    <description>First, make sure you have Quartz cloned and setup locally. Then, create a new repository on GitHub.com. Do not initialize the new repository with README, license, or gitignore files.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>Quartz Showcase</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/showcase</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/showcase</guid>
-    <description>Want to see what Quartz can do? Here are some cool community gardens: Quartz Documentation (this site!) Jacky Zhao’s Garden Socratica Toolbox Morrowind Modding Wiki Aaron Pham’s ...</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>Components</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/tags/component</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/tags/component</guid>
-    <description>Want to create your own custom component? Check out the advanced guide on creating components for more information.</description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
-  </item><item>
-    <title>Plugins</title>
-    <link>https://http:/liberdus.com/docs-contrib/quartz/docs/tags/plugin</link>
-    <guid>https://http:/liberdus.com/docs-contrib/quartz/docs/tags/plugin</guid>
-    <description></description>
-    <pubDate>Wed, 18 Dec 2024 14:11:05 GMT</pubDate>
+    <title>index</title>
+    <link>https://http:/liberdus.com/docs-contrib/</link>
+    <guid>https://http:/liberdus.com/docs-contrib/</guid>
+    <description>Welcome contributors! This documentation site is dedicated for contributing changes to liberdus network tech stack itself. Here are some useful links to get you started: Getting Started .</description>
+    <pubDate>Wed, 18 Dec 2024 14:32:01 GMT</pubDate>
   </item>
     </channel>
   </rss>

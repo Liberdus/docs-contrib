@@ -2,7 +2,7 @@ diff --git a/content/.gitkeep b/content/.gitkeep
 deleted file mode 100644
 index e69de29..0000000
 diff --git a/quartz.config.ts b/quartz.config.ts
-index dc339d9..4f692a1 100644
+index dc339d9..f2cd79f 100644
 --- a/quartz.config.ts
 +++ b/quartz.config.ts
 @@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
@@ -19,7 +19,7 @@ index dc339d9..4f692a1 100644
      },
      locale: "en-US",
 -    baseUrl: "quartz.jzhao.xyz",
-+    baseUrl: "https://liberdus.github.io",
++    baseUrl: "http://liberdus.com/docs-contrib",
      ignorePatterns: ["private", "templates", ".obsidian"],
      defaultDateType: "created",
      generateSocialImages: false,

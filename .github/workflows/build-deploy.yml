@@ -28,7 +28,7 @@ jobs:
       run: ls 
 
     - name: Clone Quartz
-      run: git clone https://github.com/jackyzha0/quartz.git
+      run: cd ../ && git clone https://github.com/jackyzha0/quartz.git && pwd
       
     - name: Install NPM packages
       run: cd quartz && npm install

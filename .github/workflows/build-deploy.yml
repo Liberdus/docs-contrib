@@ -31,16 +31,16 @@ jobs:
       run: cd ../ && git clone https://github.com/jackyzha0/quartz.git && pwd
       
     - name: Install NPM packages
-      run: cd quartz && npm install
+      run: cd ../quartz && npm install
       
     - name: Generate static html
-      run: cd quartz && ls -la && git apply ../quartz.patch && pwd && npx quartz build -d ../.
+      run: cd ../quartz && ls -la && git apply ./docs-contrib/quartz.patch && pwd && npx quartz build -d ./docs-contrib
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v4
       with:
         name: production-files
-        path: ./quartz/public
+        path: ../quartz/public
         
 
     

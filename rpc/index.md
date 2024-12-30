@@ -5,6 +5,6 @@ Liberdus rpc provided RPC-ed interface for interacting with liberdus network for
 If what you're looking for is a pure proxy server that route traffic to the one of the validator, you can use `liberdus-proxy` instead.
 
 # Content
-- [RPC API Usage](#usage)
+- [RPC API Usage](./api.md)
 - [Internal Documentation](https://liberdus.github.io/liberdus-rpc)
 

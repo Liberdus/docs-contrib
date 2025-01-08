@@ -59,7 +59,7 @@ Injects a transaction into the Liberdus system with retry logic.
 }
 ```
 
-For more detailed on transaction object, please refer to [Transactions](https://github.com/Liberdus/server/tree/dev/src/transactions).
+For more detailed on transaction object, please refer to [source code](https://github.com/Liberdus/server/tree/dev/src/transactions) or [doc](../liberdus/transactions.md).
 
 ---
 
@@ -120,11 +120,9 @@ Fetches the transaction history for a specific account.
   {
       "jsonrpc": "2.0",
       "id": <request_id>,
-      "result": [
-            {},
-            {},
-            ...
-      ]
+      "result": {
+            <Account Object>
+      }
   }
   ```
 - **Error Response:**
@@ -138,6 +136,8 @@ Fetches the transaction history for a specific account.
       }
   }
   ```
+
+  Account objects can be one of the following: [Account Types](../liberdus/accounts.md)
 
 #### **Usage Example:**
 ```json

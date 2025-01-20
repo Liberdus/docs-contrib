@@ -112,7 +112,7 @@ Retrieves the receipt of a specific transaction.
 Fetches the transaction history for a specific account.
 
 #### **Parameters:**
-- `params`: An array containing the account ID as a string on the first index. (32bytes) padded shardus address.
+- `params[0] (string)`: An array containing the account ID as a string on the first index. (32bytes) padded shardus address.
 
 #### **Returns:**
 - **Success Response:**
@@ -121,7 +121,7 @@ Fetches the transaction history for a specific account.
       "jsonrpc": "2.0",
       "id": <request_id>,
       "result": {
-            <Account Object>
+            <Transaction Receipt>
       }
   }
   ```
@@ -137,7 +137,6 @@ Fetches the transaction history for a specific account.
   }
   ```
 
-  Account objects can be one of the following: [Account Types](../liberdus/accounts.md)
 
 #### **Usage Example:**
 ```json
@@ -154,10 +153,13 @@ Fetches the transaction history for a specific account.
 ### **lib_get_account**
 
 **Description:**
-Retrieves account details for a specific address.
+Retrieves account details for a specific address or by alias.
 
 #### **Parameters:**
-- `params`: An array containing the account address as a string.
+- `params[0]`: An array containing the account address as a string. (32bytes) padded shardus address. 
+- `params[1]`: An optional string containing the alias of the account.
+
+If both are supplied alias will be used to fetch the account.
 
 #### **Returns:**
 - **Success Response:**
@@ -170,6 +172,7 @@ Retrieves account details for a specific address.
       }
   }
   ```
+
 - **Error Response:**
   ```json
   {
@@ -181,7 +184,7 @@ Retrieves account details for a specific address.
       }
   }
   ```
-
+See more about account object in [Account Types](../liberdus/accounts.md)
 #### **Usage Example:**
 ```json
 {

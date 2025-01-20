@@ -6,41 +6,41 @@
       <description>Last 10 notes on Liberdus Contributor Docs</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>accounts</title>
-    <link>https://http://liberdus.com/docs-contrib/liberdus/accounts</link>
-    <guid>https://http://liberdus.com/docs-contrib/liberdus/accounts</guid>
-    <description>Account Types in Liberdus This document details the various account types within the Liberdus system, their structure, and the transactions associated with each ...</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
-  </item><item>
-    <title>transactions</title>
-    <link>https://http://liberdus.com/docs-contrib/liberdus/transactions</link>
-    <guid>https://http://liberdus.com/docs-contrib/liberdus/transactions</guid>
-    <description>This document details all transaction types in the Liberdus codebase, outlining their structure, data types, and validation rules. All amounts are represented as bigint, and from and to fields represent 32-byte hexadecimal addresses.</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
-  </item><item>
     <title>api</title>
     <link>https://http://liberdus.com/docs-contrib/rpc/api</link>
     <guid>https://http://liberdus.com/docs-contrib/rpc/api</guid>
     <description>Liberdus RPC Documentation This document describes the available RPC methods for interacting with the Liberdus backend. These methods allow developers to perform operations such as sending transactions, retrieving transaction receipts, managing subscriptions, and more.</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
   </item><item>
     <title>rpc</title>
     <link>https://http://liberdus.com/docs-contrib/rpc/rpc</link>
     <guid>https://http://liberdus.com/docs-contrib/rpc/rpc</guid>
     <description>RPC Overview Liberdus rpc provided RPC-ed interface for interacting with liberdus network for clients. The primary role of rpc is to distribute traffic accorss all the consensor.</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
   </item><item>
     <title>getting_started</title>
     <link>https://http://liberdus.com/docs-contrib/getting_started</link>
     <guid>https://http://liberdus.com/docs-contrib/getting_started</guid>
     <description>Overview During the time contributing to the liberdus project, creating a local network is a great way to test your changes and see how they affect the network ...</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
   </item><item>
     <title>index</title>
     <link>https://http://liberdus.com/docs-contrib/</link>
     <guid>https://http://liberdus.com/docs-contrib/</guid>
     <description>Welcome contributors! This documentation site is dedicated for contributing changes to liberdus network tech stack itself. Here are some useful links to get you started: Getting Started RPC .</description>
-    <pubDate>Wed, 08 Jan 2025 09:16:10 GMT</pubDate>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
+  </item><item>
+    <title>accounts</title>
+    <link>https://http://liberdus.com/docs-contrib/liberdus/accounts</link>
+    <guid>https://http://liberdus.com/docs-contrib/liberdus/accounts</guid>
+    <description>Account Types in Liberdus This document details the various account types within the Liberdus system, their structure, and the transactions associated with each ...</description>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
+  </item><item>
+    <title>transactions</title>
+    <link>https://http://liberdus.com/docs-contrib/liberdus/transactions</link>
+    <guid>https://http://liberdus.com/docs-contrib/liberdus/transactions</guid>
+    <description>This document details all transaction types in the Liberdus codebase, outlining their structure, data types, and validation rules. All amounts are represented as bigint, and from and to fields represent 32-byte hexadecimal addresses.</description>
+    <pubDate>Mon, 20 Jan 2025 08:35:29 GMT</pubDate>
   </item>
     </channel>
   </rss>

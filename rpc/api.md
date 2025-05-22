@@ -1,39 +1,47 @@
 
 # Liberdus RPC Documentation
 
-This document describes the available RPC methods for interacting with the Liberdus backend. These methods allow developers to perform operations such as sending transactions, retrieving transaction receipts, managing subscriptions, and more.
+This document provide an overview of websocket RPC API usage for liberdus gateway server. The websocket server will ping the client every 30 seconds to keep the connection alive. The client should respond with a pong message to keep the connection alive. If the client does not respond within 30 seconds, the server will close the connection.
 
 ---
 
 ## Methods Overview
 
-- **[lib_send_transaction](#lib_send_transaction)**: Injects a transaction into the Liberdus system with retry logic.
-- **[lib_get_transaction_receipt](#lib_get_transaction_receipt)**: Retrieves the receipt of a specific transaction.
-- **[lib_get_transaction_history](#lib_get_transaction_history)**: Fetches the transaction history for a given account.
-- **[lib_get_account](#lib_get_account)**: Fetches account details based on an address.
-- **[lib_get_messages](#lib_get_messages)**: Retrieves chat messages for a specific chat ID.
-- **[lib_subscribe](#lib_subscribe)**: Subscribes to a chat room for updates.
-- **[lib_unsubscribe](#lib_unsubscribe)**: Unsubscribes from a chat room.
+- **[ChatEvent](#ChatEvent)**: Subscribe or unsubscribe an account.
 
 ---
 
-### **lib_send_transaction**
+### **ChatEvent**
 
 **Description:**
-Injects a transaction into the Liberdus system with retry logic.
+Subscribe or unsubscribe an account.
 
 #### **Parameters:**
-- `params`: Stringified Transaction Object.
+- `params`: [value1, value2].
+    - `value1`: Possible values `"subscribe"` or `"unsubscribe"`.
+    - `value2`: The shardus account id to subscribe or unsubscribe. The account id is a 64-byte hex string without the 0x prefix, e.g., `1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef`. 
 
-#### **Returns:**
+
+#### **Request Example:**
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "ChatEvent",
+    "params": ["{\"subscribe\": \"0x1234...\", \"value\": \"100\"}"],
+    "id": 1
+}
+```
+
+##### **Returns:**
 - **Success Response:**
   ```json
   {
       "jsonrpc": "2.0",
       "id": <request_id>,
+      "error": null,
       "result": {
-          "success": true,
-          "txid": "<hash>"
+          "subscription_status": true,
+          "account_id": "<64byte_string>"
       }
   }
   ```
@@ -42,6 +50,7 @@ Injects a transaction into the Liberdus system with retry logic.
   {
       "jsonrpc": "2.0",
       "id": <request_id>,
+      "result": null,
       "error": {
           "code": -32600,
           "message": "<error_message>"
@@ -49,275 +58,20 @@ Injects a transaction into the Liberdus system with retry logic.
   }
   ```
 
-#### **Usage Example:**
+##### **Notification Example:**
 ```json
 {
     "jsonrpc": "2.0",
-    "method": "lib_send_transaction",
-    "params": ["{\"to\": \"0x1234...\", \"value\": \"100\"}"],
-    "id": 1
+    "method": "ChatEvent",
+    "result": {
+        "account_id": "<64byte_string>",
+        "timestamp": "<last_chat_timestamp>",
+    }
+    "id": null
 }
 ```
-
-For more detailed on transaction object, please refer to [source code](https://github.com/Liberdus/server/tree/dev/src/transactions) or [doc](../liberdus/transactions.md).
+Rpc request id are to be supplied by the client. The server will echo the id back in the response to clarify which response is for which request. When an rpc response is made without an id it means it is a notification.
+Read more on RPC 2.0 specification [here](https://www.jsonrpc.org/specification).
 
 ---
 
-### **lib_get_transaction_receipt**
-
-**Description:**
-Retrieves the receipt of a specific transaction.
-
-#### **Parameters:**
-- `params`: An array containing the transaction id as a string on the first index.
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": {
-        ...
-      }
-  }
-  ```
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_get_transaction_receipt",
-    "params": ["0xdeadbeef...32byte"],
-    "id": 1
-}
-```
-
----
-
-### **lib_get_transaction_history**
-
-**Description:**
-Fetches the transaction history for a specific account.
-
-#### **Parameters:**
-- `params[0] (string)`: An array containing the account ID as a string on the first index. (32bytes) padded shardus address.
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": {
-            <Transaction Receipt>
-      }
-  }
-  ```
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-
-
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_get_transaction_history",
-    "params": ["0xaccount123"],
-    "id": 1
-}
-```
-
----
-
-### **lib_get_account**
-
-**Description:**
-Retrieves account details for a specific address or by alias.
-
-#### **Parameters:**
-- `params[0]`: An array containing the account address as a string. (32bytes) padded shardus address. 
-- `params[1]`: An optional string containing the alias of the account.
-
-If both are supplied alias will be used to fetch the account.
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": {
-        <Account Object>
-      }
-  }
-  ```
-
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-See more about account object in [Account Types](../liberdus/accounts.md)
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_get_account",
-    "params": ["0xaddress123"],
-    "id": 1
-}
-```
-
----
-
-### **lib_get_messages**
-
-**Description:**
-Retrieves chat messages for a specific chat ID.
-
-#### **Parameters:**
-- `params`: An array containing the chat ID as a string. Chat id is blake2 hash of a sorted joint string of two account address alphabetically. 
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": [
-        <Message Object>,
-          ...
-      ]
-  }
-  ```
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_get_messages",
-    "params": ["chatroom123"],
-    "id": 1
-}
-```
-
----
-
-### **lib_subscribe**
-
-**Description:**
-Subscribes to a chat room for updates.
-
-#### **Parameters:**
-- `params`: An array containing the chat ID as a string. Chat id is blake2 hash of a sorted joint string of two account address alphabetically. 
-- Requires a WebSocket connection.
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": "<subscription_id>"
-  }
-  ```
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_subscribe",
-    "params": ["0xfefe...."],
-    "id": 1
-}
-```
-
----
-
-### **lib_unsubscribe**
-
-**Description:**
-Unsubscribes from a chat room.
-
-#### **Parameters:**
-- `params`: An array containing the subscription ID as a string.
-
-#### **Returns:**
-- **Success Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "result": true
-  }
-  ```
-- **Error Response:**
-  ```json
-  {
-      "jsonrpc": "2.0",
-      "id": <request_id>,
-      "error": {
-          "code": -32600,
-          "message": "<error_message>"
-      }
-  }
-  ```
-
-#### **Usage Example:**
-```json
-{
-    "jsonrpc": "2.0",
-    "method": "lib_unsubscribe",
-    "params": ["subscription123"],
-    "id": 1
-}
-```
